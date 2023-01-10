@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="test_normal" translatable="false">Hello World!</string>
+    <string name="test_masked" translatable="false">Vm0wd2QyVkZOVWRXV0doVFYwZDRWRll3Wkc5WFZsbDNXa1JTVjJKR2JETlhhMUpUVmpGYWRHVkdXbFpOYWtFeFZtMTRZV014WkhWaFJscE9ZbTFvVVZacVFtRlRNazE0Vkc1T2FWSnVRazlWYWtwdlZWWmFjbFZyWkZwV01VcEpWbTEwYzJGV1NuUmhSemxWVm0xb1JGWkdXbXRXTVZwMFVteE9UbFp1UWxoV1JscFhWakpHU0ZadVJsSldSM001</string>
+    <integer name="test_steps">10</integer>
+</resources>
