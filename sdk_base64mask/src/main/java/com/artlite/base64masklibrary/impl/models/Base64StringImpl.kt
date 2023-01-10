@@ -20,6 +20,9 @@ final class Base64StringEncoder: ReadOnlyProperty<Any?, String?>, Base64String {
     /** [String] value of the masked. */
     override val string: String?
 
+    /** [String] value of the decoded. */
+    private var decoded: String? = null
+
     /**
      * Constructor which provide to create the [Base64StringEncoder].
      * @param steps Int value.
@@ -52,13 +55,16 @@ final class Base64StringEncoder: ReadOnlyProperty<Any?, String?>, Base64String {
      */
     override fun getValue(thisRef: Any?, property: KProperty<*>): String? {
         val encoder by Base64MaskHelper()
-        return when(stringRes) {
-            null -> when(string) {
-                null -> null
-                else -> encoder.encode(string, steps)
+        if (decoded == null) {
+            decoded = when(stringRes) {
+                null -> when(string) {
+                    null -> null
+                    else -> encoder.encode(string, steps)
+                }
+                else -> encoder.encode(stringRes, steps)
             }
-            else -> encoder.encode(stringRes, steps)
         }
+        return decoded
     }
 
 }
@@ -77,6 +83,9 @@ final class Base64StringDecoder: ReadOnlyProperty<Any?, String?>, Base64String {
     /** [String] value of the masked. */
     override val string: String?
 
+    /** [String] value of the decoded. */
+    private var decoded: String? = null
+
     /**
      * Constructor which provide to create the [Base64StringDecoder].
      * @param steps Int value.
@@ -109,13 +118,16 @@ final class Base64StringDecoder: ReadOnlyProperty<Any?, String?>, Base64String {
      */
     override fun getValue(thisRef: Any?, property: KProperty<*>): String? {
         val encoder by Base64MaskHelper()
-        return when(stringRes) {
-            null -> when(string) {
-                null -> null
-                else -> encoder.decode(string, steps)
+        if (decoded == null) {
+            decoded = when(stringRes) {
+                null -> when(string) {
+                    null -> null
+                    else -> encoder.decode(string, steps)
+                }
+                else -> encoder.decode(stringRes, steps)
             }
-            else -> encoder.decode(stringRes, steps)
         }
+        return decoded
     }
 
 }
